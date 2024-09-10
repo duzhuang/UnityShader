@@ -1,5 +1,5 @@
 // 需要再启动unity editor 之前设置添加命令行参数 -force-opengl
-Shader "Shaders/2D/BaseGLSL"
+Shader "Shaders/GLSL/BaseGLSL"
 {
     Properties
     {

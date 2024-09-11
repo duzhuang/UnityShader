@@ -1,4 +1,4 @@
-Shader "Shaders/2D/BaseShader"
+Shader "Shaders/CG/BaseShader"
 {
     //----------------------------[子着色器]-----------------------
     SubShader

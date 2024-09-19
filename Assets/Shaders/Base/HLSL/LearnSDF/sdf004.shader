@@ -3,7 +3,9 @@ Shader "Shaders/HLSL/SDF/sdf004"
     Properties
     {
         [HideInInSpector]_MainTex ("Base (RGB)", 2D) = "white" {} 
-        _Albedo ("Albedo", Color) = (1,1,1,1)      
+        _Albedo ("Albedo", Color) = (1,1,1,1)   
+        _Speed ("Speed", Float) = 2.0
+        _Density ("Density",Float) = 50.0
     }
     SubShader
     {
@@ -19,7 +21,9 @@ Shader "Shaders/HLSL/SDF/sdf004"
         #define time _Time.g
 
         CBUFFER_START(UnityPerMaterial)    
-            float4 _Albedo;     
+            float4 _Albedo;   
+            float _Speed;
+            float _Density;  
         CBUFFER_END
 
         TEXTURE2D(_MainTex);
@@ -73,7 +77,7 @@ Shader "Shaders/HLSL/SDF/sdf004"
 
                 float dist =  sdf_rectangle1(uv, wh);
 
-                float grayColor = sin(dist * 100.0 - time*2.0) ;
+                float grayColor = sin(dist * _Density - time * _Speed) ;
                 baseTex = float4(grayColor,grayColor,grayColor, 0.0);   
                
                 return baseTex;

@@ -63,8 +63,12 @@ Shader "Shaders/HLSL/SDF/sdfCircle"
                 float4 baseTex = SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex, i.uv); 
 
                 float q = length(uv - float2(0,0));
+                // 弧度的取值范围是 0~2PI
+                // cos 的取值范围是 -1~1
 
-                _Albedo.rgb = smoothstep(_Radius,_Radius+0.01,q);
+                float r = _Radius + 0.1 * cos( atan2(uv.x,uv.y)*5 );
+                            
+                _Albedo.rgb = smoothstep(r,r+0.01,q);
                                
                 return float4(_Albedo.rgb,1.0);
             }

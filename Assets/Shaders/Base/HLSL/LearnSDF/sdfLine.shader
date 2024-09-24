@@ -7,7 +7,7 @@ Shader "Shaders/HLSL/SDF/sdfLine"
     }
     SubShader
     {
-        Tags { "RenderType"="AlphaTest" }
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         HLSLINCLUDE
